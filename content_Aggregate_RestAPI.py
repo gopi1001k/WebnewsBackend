@@ -1,4 +1,5 @@
 
+import os
 from flask import Flask, jsonify, request, send_from_directory
 import csv
 # from flask_cors import CORS
@@ -82,7 +83,8 @@ def catch_all(path=None):
     return send_from_directory(app.static_folder,'index.html')
     
 if __name__ == '__main__':
-    app.run(host="0.0.0.0",port=7000,debug=True)
-
+    # app.run(host="0.0.0.0",port=7000,debug=True)
+    port = int(os.environ.get("PORT", 7000))
+    app.run(host="0.0.0.0", port=port, debug=True)
 
 
